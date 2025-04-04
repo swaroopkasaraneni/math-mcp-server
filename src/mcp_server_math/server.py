@@ -42,8 +42,20 @@ async def serve() -> None:
     async def list_prompts() -> list[Prompt]:
         return [
             Prompt(
-                name="math",
-                description="providing the math operation like add, multiply",
+                name="add",
+                description="Adds two numbers",
+                arguments=[
+                    PromptArgument(
+                        name="a", description="first number", required=True
+                    ),
+                    PromptArgument(
+                        name="b", description="second number", required=True
+                    )
+                ],
+            ),
+            Prompt(
+                name="multiply",
+                description="Multiplies two numbers",
                 arguments=[
                     PromptArgument(
                         name="a", description="first number", required=True
