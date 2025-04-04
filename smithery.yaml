@@ -3,7 +3,7 @@ startCommand:
   configSchema: {}
   urlFunction: |-
     (config) => ({
-      url: "http://localhost:5000/sse", // or whatever port your server runs on
-      headers: {},
+      url: "http://localhost:5000/sse",
+      headers: {}
     })
   exampleConfig: {}
