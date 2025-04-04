@@ -1,0 +1,9 @@
+startCommand:
+  type: sse
+  configSchema: {}
+  urlFunction: |-
+    (config) => ({
+      url: "http://localhost:5000/sse", // or whatever port your server runs on
+      headers: {},
+    })
+  exampleConfig: {}
