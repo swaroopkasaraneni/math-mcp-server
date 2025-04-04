@@ -37,7 +37,35 @@ async def serve() -> None:
                 inputSchema=MathOperation.model_json_schema(),
             ),
         ]
-        
+    
+    @server.get_prompt()
+    async def get_prompt(name, arguments):
+        if name == "multiply":
+            a = arguments.get("a")
+            b = arguments.get("b")
+            result = a * b
+            return GetPromptResult(
+                description=f"Multiply {a} * {b}",
+                messages=[
+                    PromptMessage(role="user", content=TextContent(type="text", text=f"What is {a} * {b}?")),
+                    PromptMessage(role="assistant", content=TextContent(type="text", text=f"{a} * {b} = {result}")),
+                ]
+            )
+            
+        elif name == "add":
+            a = arguments.get("a")
+            b = arguments.get("b")
+            result = a + b
+            return GetPromptResult(
+                description=f"Multiply {a} * {b}",
+                messages=[
+                    PromptMessage(role="user", content=TextContent(type="text", text=f"What is {a} + {b}?")),
+                    PromptMessage(role="assistant", content=TextContent(type="text", text=f"{a} + {b} = {result}")),
+                ]
+            ) 
+            
+        raise ErrorData(code=-32601, message="Prompt not found")
+
     @server.list_prompts()
     async def list_prompts() -> list[Prompt]:
         return [
