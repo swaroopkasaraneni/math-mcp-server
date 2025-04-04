@@ -2,9 +2,9 @@ startCommand:
   type: sse
   configSchema: {}
   urlFunction: |
-    (config) => {
+    function(config) {
       return {
-        url: "http://localhost:5000",
+        url: "http://localhost:5000/sse",
         headers: {}
       };
     }
